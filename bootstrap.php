@@ -7,4 +7,4 @@ Autoloader::add_classes(array(
     'CoffeeScript\\Init'            => __DIR__.'/vendor/coffeescript-php/src/CoffeeScript/Init.php',
     'CoffeeScript\\Compiler'       => __DIR__.'/vendor/coffeescript-php/src/CoffeeScript/Compiler.php',
 ));
-\CoffeeScript\Init::load();
+\CoffeeScript\Init::load(__DIR__.'/vendor/coffeescript-php/src/CoffeeScript/');
