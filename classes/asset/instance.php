@@ -142,7 +142,7 @@ class Asset_Instance extends \Fuel\Core\Asset_Instance
                 continue;
             }
             $attr['src'] = $javascript;
-            $output .= html_tag('script', $attr) . PHP_EOL;
+            $output .= html_tag('script', $attr, '') . PHP_EOL;
         }
         return $output;
     }
