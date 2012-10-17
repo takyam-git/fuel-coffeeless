@@ -94,7 +94,16 @@ class Asset_Instance extends \Fuel\Core\Asset_Instance
             }
 
             $export_file_name = preg_replace('/\.less$/', '', $less_file_name) . '.css';
-            file_put_contents($output_dir . DS . $export_file_name, $compiled_css);
+            $export_file_path = $output_dir . DS . $export_file_name;
+
+            $export_file_dir = dirname($export_file_path);
+            if(!is_dir($export_file_dir)){
+                if (!mkdir($export_file_dir, 0777, true)) {
+                    throw new Exception("Directory '${export_file_dir}' is not exists.'");
+                }
+            }
+
+            file_put_contents($export_file_path, $compiled_css);
 
             return $link_base . DS . $export_file_name . ($add_file_mtime? '?' . filemtime($less_path) : '');
 
