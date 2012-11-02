@@ -182,10 +182,18 @@ class Asset_Instance extends \Fuel\Core\Asset_Instance
                 }
 
                 $dir = opendir($dir_path);
+                $coffee_script_paths = array();
                 while ($file = readdir($dir)) {
                     if (substr($file, -7, 7) === '.coffee') {
                         $coffee .= file_get_contents($dir_path . DS . $file) . PHP_EOL;
+                        $coffee_script_paths[] = $dir_path . DS . $file;
                     }
+                }
+
+                //ファイル名でソート
+                asort($coffee_script_paths);
+                foreach($coffee_script_paths as $coffee_script_path){
+                    $coffee .= file_get_contents($coffee_script_path) . PHP_EOL;
                 }
 
                 //単一Coffeeファイルの場合
