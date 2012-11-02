@@ -185,7 +185,6 @@ class Asset_Instance extends \Fuel\Core\Asset_Instance
                 $coffee_script_paths = array();
                 while ($file = readdir($dir)) {
                     if (substr($file, -7, 7) === '.coffee') {
-                        $coffee .= file_get_contents($dir_path . DS . $file) . PHP_EOL;
                         $coffee_script_paths[] = $dir_path . DS . $file;
                     }
                 }
